@@ -14,6 +14,7 @@ RUN echo "export MAVEN_HOME=/export/servers/mvn" >> /etc/profile
 RUN chmod +x ${MAVEN_HOME}/bin/*
 
 # 将中央仓库 修改为aliyun
-ADD m2/ ~/.m2
+RUN mkdir -p ~/.m2/
+ADD m2 ~/.m2/
 
 RUN source /etc/profile
