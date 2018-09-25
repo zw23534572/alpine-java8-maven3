@@ -25,6 +25,7 @@ switch_branch() {
 }
 
 main() {
+    echo "入参1:$1,入参2:$2,入参3:$3,入参4:$4"
 	validation
 
 	mkdir -p current_path
