@@ -1,4 +1,3 @@
-#!/usr/bin bash
 project_name="xx"
 git_path=$1
 git_branch=$2
@@ -50,6 +49,7 @@ main() {
 		git pull
 	fi
 
+    
 	if [ -n "$sub_project_path" ]; then
 		echo "cd $sub_project_path"
 		cd $sub_project_path
