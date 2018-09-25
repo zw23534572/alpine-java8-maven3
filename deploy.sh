@@ -28,7 +28,7 @@ switch_branch() {
 main() {
 	validation
 
-    mkdir -p current_path
+	mkdir -p current_path
 
 	cd $current_path
 
@@ -37,27 +37,28 @@ main() {
 	if [ ! -d "$project_name" ]; then
 		echo "git clone $git_path"
 		git clone $git_path
-        echo "cd $project_name"
+		echo "cd $project_name"
 		cd $project_name
-        echo "switch_branch"
+		echo "switch_branch"
 		switch_branch
 	else
 		echo "cd $project_name"
 		cd $project_name
-        echo "switch_branch"
+		echo "switch_branch"
 		switch_branch
-        echo "git pull"
+		echo "git pull"
 		git pull
 	fi
 
-    if [ -n "$sub_project_path" ]; then
-        cd $sub_project_path
-    fi
+	if [ -n "$sub_project_path" ]; then
+		echo "cd $sub_project_path"
+		cd $sub_project_path
+	fi
 
-    if [ -f "pom.xml" ]; then
-        echo "mvn package"
-        mvn package
-    fi
+	if [ -f "pom.xml" ]; then
+		echo "mvn package"
+		mvn package
+	fi
 }
 
 main

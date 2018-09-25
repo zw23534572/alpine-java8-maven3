@@ -1,0 +1,1 @@
+ sh deploy.sh "https://github.com/zw23534572/sjroom-demo.git" "spring-boot/spring-boot-web"

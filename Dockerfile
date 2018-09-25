@@ -18,6 +18,6 @@ RUN mkdir -p /root/.m2/
 ADD m2 /root/.m2
 
 # 添加部署的sh
-ADD deploy.sh /root/deploy.sh
+ADD deploy.sh /export/deploy.sh
 
 RUN source /etc/profile
