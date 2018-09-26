@@ -1,7 +1,7 @@
 FROM registry.cn-shenzhen.aliyuncs.com/sjroom/alpine-java8
 
-# 安装 git lrzsz
-RUN apk add git lrzsz
+# 安装 git 
+RUN apk add git 
 RUN rm -rf /var/cache/apk/* && rm -rf /packages
 
 # 本地安装 maven
@@ -19,6 +19,12 @@ ADD m2 /root/.m2
 
 # 添加部署的sh
 ADD deploy.sh /export/deploy.sh
+ADD service.sh /export/service.sh
 RUN chmod +x /export/*.sh
 
 RUN source /etc/profile
+
+
+#启动、停止脚本(sprintboot)
+RUN echo "sh /export/App/service.sh start" >> /export/servers/script/start.sh
+RUN echo "sh /export/App/service.sh stop" >> /export/servers/script/stop.sh

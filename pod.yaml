@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: docker_build
+spec:
+  containers:
+  - name: alpine-java8-maven3
+    image: registry.cn-shenzhen.aliyuncs.com/sjroom/alpine-java8-maven3

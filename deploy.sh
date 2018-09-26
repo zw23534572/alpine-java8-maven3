@@ -64,6 +64,8 @@ main() {
 		echo "cp target/*.jar $out_put_path"
 		cp target/*.jar $out_put_path
 	fi
+
+	cp service.sh $out_put_path
 }
 
 main
