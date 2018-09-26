@@ -18,7 +18,6 @@ ADD m2 /root/.m2
 
 # 添加部署的sh
 ADD deploy.sh /export/deploy.sh
-ADD service.sh /export/service.sh
 RUN chmod +x /export/*.sh
 
 RUN source /etc/profile
