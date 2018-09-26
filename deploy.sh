@@ -10,6 +10,7 @@ get_project_name() {
 }
 
 validation() {
+	echo "入参git_path:$git_path,入参git_branch:$git_branch,入参3:$sub_project_path"
 	# 入参1：代表项目名称
 	if [ ! -n "$git_path" ]; then
 		echo "请填写提交git地址"
@@ -25,7 +26,7 @@ switch_branch() {
 }
 
 main() {
-    echo "入参1:$1,入参2:$2,入参3:$3,入参4:$4"
+    echo "入参1:$1,入参2:$2,入参3:$3"
 	validation
 
 	mkdir -p current_path
