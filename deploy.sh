@@ -1,8 +1,10 @@
 project_name="xx"
+out_put_path="/export/output/"
 git_path=$1
 git_branch=$2
 sub_project_path=$3
 current_path="/export/App"
+
 get_project_name() {
 	project_name=${git_path##*/}
 	project_name=${project_name%.*}
@@ -34,21 +36,21 @@ main() {
 
 	get_project_name $git_path
 
-	# if [ ! -d "$project_name" ]; then
+	if [ ! -d "$project_name" ]; then
 		echo "git clone $git_path"
 		git clone $git_path
 		echo "cd $project_name"
 		cd $project_name
-		# echo "switch_branch"
-		# switch_branch
-	# else
-	# 	echo "cd $project_name"
-	# 	cd $project_name
-	# 	echo "switch_branch"
-	# 	switch_branch
-	# 	echo "git pull"
-	# 	git pull
-	# fi
+		echo "switch_branch"
+		switch_branch
+	else
+		echo "cd $project_name"
+		cd $project_name
+		echo "switch_branch"
+		switch_branch
+		echo "git pull"
+		git pull
+	fi
 
     
 	if [ -n "$sub_project_path" ]; then
@@ -59,6 +61,8 @@ main() {
 	if [ -f "pom.xml" ]; then
 		echo "mvn package"
 		mvn package
+		echo "cp target/*.jar $out_put_path"
+		cp target/*.jar $out_put_path
 	fi
 }
 

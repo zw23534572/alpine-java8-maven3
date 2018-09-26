@@ -1,7 +1,7 @@
 FROM registry.cn-shenzhen.aliyuncs.com/sjroom/alpine-java8
 
-# 安装 git
-RUN apk add git
+# 安装 git lrzsz
+RUN apk add git lrzsz
 RUN rm -rf /var/cache/apk/* && rm -rf /packages
 
 # 本地安装 maven
