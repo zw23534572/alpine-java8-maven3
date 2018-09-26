@@ -10,7 +10,6 @@ get_project_name() {
 }
 
 validation() {
-	echo "入参git_path:$git_path,入参git_branch:$git_branch,入参3:$sub_project_path"
 	# 入参1：代表项目名称
 	if [ ! -n "$git_path" ]; then
 		echo "请填写提交git地址"
@@ -26,7 +25,7 @@ switch_branch() {
 }
 
 main() {
-    echo "入参1:$1,入参2:$2,入参3:$3"
+	echo "入参git_path:$git_path,入参git_branch:$git_branch,入参3:$sub_project_path"
 	validation
 
 	mkdir -p current_path
@@ -35,21 +34,21 @@ main() {
 
 	get_project_name $git_path
 
-	if [ ! -d "$project_name" ]; then
+	# if [ ! -d "$project_name" ]; then
 		echo "git clone $git_path"
 		git clone $git_path
 		echo "cd $project_name"
 		cd $project_name
-		echo "switch_branch"
-		switch_branch
-	else
-		echo "cd $project_name"
-		cd $project_name
-		echo "switch_branch"
-		switch_branch
-		echo "git pull"
-		git pull
-	fi
+		# echo "switch_branch"
+		# switch_branch
+	# else
+	# 	echo "cd $project_name"
+	# 	cd $project_name
+	# 	echo "switch_branch"
+	# 	switch_branch
+	# 	echo "git pull"
+	# 	git pull
+	# fi
 
     
 	if [ -n "$sub_project_path" ]; then
