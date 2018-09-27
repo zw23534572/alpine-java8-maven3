@@ -30,7 +30,7 @@ main() {
 	cd $current_path
 
 	project_name=${git_path##*/}
-	project_name=${project_name##*/}
+	project_name=${project_name%.*}
 	echo "获取项目名称$project_name"
 
 	echo "如果源码区未有该项目[$project_name]，则使用git clone" 
