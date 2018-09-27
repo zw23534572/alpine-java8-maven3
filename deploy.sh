@@ -60,8 +60,8 @@ main() {
 
 	echo "如果当前路径没有pom文件，则无法进行pom编译" 
 	if [ -f "pom.xml" ]; then
-		echo "mvn package"
-		mvn package
+		echo "mvn package -Dmaven.test.skip=true"
+		mvn package -Dmaven.test.skip=true
 	fi
 
 	echo "将编译好的源码以及service.sh放到[$out_put_path],项目名称为[$project_name]"
