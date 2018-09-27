@@ -18,7 +18,7 @@ spec:
         - name: maven-install
           image: registry.cn-shenzhen.aliyuncs.com/sjroom/alpine-java8-maven3
           command: ["bash"]
-          args: ["-c","/export/deploy.sh https://github.com/zw23534572/sjroom-demo.git master spring-boot/spring-boot-web"]
+          args: ["-c","/export/deploy.sh https://gitee.com/zw23534572/sjroom-demo.git master spring-boot/spring-boot-web"]
           volumeMounts:
             - name: workdir
               mountPath: "/export/output/"
