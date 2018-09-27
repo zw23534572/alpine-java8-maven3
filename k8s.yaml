@@ -11,20 +11,20 @@ spec:
       containers:
         - name: spring-boot-web
           image: registry.cn-shenzhen.aliyuncs.com/sjroom/alpine-java8
-      #     volumeMounts:
-      #       - name: workdir
-      #         mountPath: "/export/App/"
-      # initContainers:
-      #   - name: maven-install
-      #     image: registry.cn-shenzhen.aliyuncs.com/sjroom/alpine-java8-maven3
-      #     command: ["bash"]
-      #     args: ["-c","/export/deploy.sh https://gitee.com/zw23534572/sjroom-demo.git master spring-boot/spring-boot-web"]
-      #     volumeMounts:
-      #       - name: workdir
-      #         mountPath: "/export/output/"
-      # volumes:
-      #   - name: workdir
-      #     emptyDir: {}
+          volumeMounts:
+            - name: workdir
+              mountPath: "/export/App/"
+      initContainers:
+        - name: maven-install
+          image: registry.cn-shenzhen.aliyuncs.com/sjroom/alpine-java8-maven3
+          command: ["bash"]
+          args: ["-c","/export/deploy.sh https://gitee.com/zw23534572/sjroom-demo.git master spring-boot/spring-boot-web"]
+          volumeMounts:
+            - name: workdir
+              mountPath: "/export/output/"
+      volumes:
+        - name: workdir
+          emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
