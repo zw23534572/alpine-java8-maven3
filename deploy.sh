@@ -1,17 +1,9 @@
-project_name="" #项目名称
 current_path="/export/App" #源码路径
 out_put_path="/export/output/" #将编译好的class文件与service.sh放到该文件下,映射出去
 git_path=$1	#需要编译的源码git地址
 git_branch=$2 #需要编译的源码分支
 sub_project_path=$3 #需要编译的源码子目录路径
 
-
-# 获取当前的项目名称
-get_project_name() {
-	project_name=${git_path##*/}
-	project_name=${project_name%.*}
-	echo "项目名称为 $project_name"
-}
 
 # 开始验证
 validation() {
@@ -37,6 +29,10 @@ main() {
 	mkdir -p current_path
 	cd $current_path
 
+	project_name=${git_path##*/}
+	project_name=${project_name##*/}
+	echo "获取项目名称$project_name"
+
 	echo "如果源码区未有该项目[$project_name]，则使用git clone" 
 	if [ ! -d "$project_name" ]; then
 		echo "git clone $git_path"
@@ -59,20 +55,20 @@ main() {
 	if [ -n "$sub_project_path" ]; then
 		echo "cd $sub_project_path"
 		cd $sub_project_path
+		project_name=${sub_project_path##*/}
 	fi
 
-	echo "如果当前路径没有pom文件，无法进行pom编译" 
+	echo "如果当前路径没有pom文件，则无法进行pom编译" 
 	if [ -f "pom.xml" ]; then
 		echo "mvn package"
 		mvn package
 	fi
 
-	echo "将编译好的源码以及service.sh放到[$out_put_path]"
+	echo "将编译好的源码以及service.sh放到[$out_put_path],项目名称为[$project_name]"
 	cp service.sh $out_put_path
 	mkdir $out_put_path/$project_name
 	cp target/*.jar $out_put_path/$project_name
 }
 
-# 获取项目名称
-get_project_name $git_path
+
 main
