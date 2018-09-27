@@ -1,5 +1,5 @@
 current_path="/export/App" #源码路径
-out_put_path="/export/output/" #将编译好的class文件与service.sh放到该文件下,映射出去
+out_put_path="/export/output" #将编译好的class文件与service.sh放到该文件下,映射出去
 git_path=$1	#需要编译的源码git地址
 git_branch=$2 #需要编译的源码分支
 sub_project_path=$3 #需要编译的源码子目录路径
@@ -65,11 +65,11 @@ main() {
 	fi
 
 	echo "将编译好的源码以及service.sh放到[$out_put_path],项目名称为[$project_name]"
+	rm -rf $out_put_path/*
 	mkdir -p $out_put_path
-	cp service.sh $out_put_path
+	cp service.sh $out_put_path/
 	mkdir $out_put_path/$project_name
 	cp target/*.jar $out_put_path/$project_name
 }
-
 
 main
