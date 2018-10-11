@@ -21,8 +21,3 @@ ADD deploy.sh /export/deploy.sh
 RUN chmod +x /export/*.sh
 
 RUN source /etc/profile
-
-
-#启动、停止脚本(sprintboot)
-RUN echo "sh /export/App/service.sh start" >> /export/servers/script/start.sh
-RUN echo "sh /export/App/service.sh stop" >> /export/servers/script/stop.sh

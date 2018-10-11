@@ -6,3 +6,12 @@ spec:
   containers:
   - name: alpine-java8-maven3
     image: registry.cn-shenzhen.aliyuncs.com/sjroom/alpine-java8-maven3
+    volumeMounts:
+      name: test-volume
+    - mountPath: /output
+  volumes:
+  - name: test-volume
+    hostPath:
+      # directory location on host
+      path: /data
+# https://raw.githubusercontent.com/zw23534572/alpine-java8-maven3/master/pod.yaml
