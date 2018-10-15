@@ -7,8 +7,8 @@ spec:
   - name: alpine-java8-maven3
     image: registry.cn-shenzhen.aliyuncs.com/sjroom/alpine-java8-maven3
     volumeMounts:
-      name: test-volume
-    - mountPath: /output
+    -  name: test-volume
+       mountPath: /output
   volumes:
   - name: test-volume
     hostPath:
