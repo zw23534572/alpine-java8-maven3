@@ -1,6 +1,6 @@
 FROM registry.cn-shenzhen.aliyuncs.com/sjroom/alpine-java8
 
-RUN apk add git
+RUN apk add git docker
 RUN rm -rf /var/cache/apk/* && rm -rf /packages
 
 # 本地安装 maven
