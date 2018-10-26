@@ -67,6 +67,7 @@ main() {
 	echo "将编译好的源码以及service.sh放到[$out_put_path],项目名称为[$project_name]"
 	rm -rf $out_put_path/*
 	mkdir -p $out_put_path
+	cp disconf.conf $out_put_path/
 	cp service.sh $out_put_path/
 	mkdir $out_put_path/$project_name
 	cp target/*.jar $out_put_path/$project_name
